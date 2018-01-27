@@ -79,15 +79,16 @@
     <!-- products -->
     <div class="row" style="">
       <div class="col-md-2"
-           style="background-color:#373737;margin-left: 15px;margin-top: 15px;"
            v-for="result in results"
            @click="attachRed =! attachRed"
-           :class="{active:attachRed}"
+           @click.prevent="attachRed = result"
+           :class="{active:attachRed == result}"
+           style="background-color:#373737;margin-left: 15px;margin-top: 15px;"
            >
 
        <div class="row"
             style="height:3px;"
-            v-bind:style="myStyle">
+            v-bind:style="">
        </div>
         <div class="row">
           <span class="float-right" style="float: right;">{{result.zone.name}}</span>
@@ -131,9 +132,12 @@ export default {
 
     postPost(){
       axios.post('http://localhost:3000/api/tickets',{
+        ride:[this.attachRed],
         access_code:this.postBody
       })
-        .then(response =>{})
+        .then(response =>{
+          this.postBody=''
+        })
         .catch(e =>{
           this.error.push(e)
         })
