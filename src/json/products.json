@@ -1,0 +1,11 @@
+{
+  "id": 0,
+  "zone":{
+    "id": "0",
+    "name": "Big Town Hall Slides",
+    "color":"orange"
+  },
+  "name": "string",
+  "remaining_tickets": 0,
+  "return_time": "2018-01-24T18:40:59.147Z"
+}
